@@ -125,7 +125,7 @@
 ```
 reread-yijing/
 ├── README.md                 # 本文件：总体框架与指南
-├── index.html                # GitHub Pages 首页（由 README 生成）
+├── index.html                # GitHub Pages 首页（自定义设计，展示报告卡片）
 ├── hexagrams/                # 单卦 HTML 报告（用于 GitHub Pages）
 │   ├── 01-qian.html
 │   └── 02-kun.html
@@ -187,10 +187,10 @@ python scripts/md_to_html.py
 
 ### 转换规则
 
-- `README.md` → `index.html`
 - `docs/hexagrams/01-qian.md` → `hexagrams/01-qian.html`
+- `docs/hexagrams/02-kun.md` → `hexagrams/02-kun.html`
 - 所有相对 `.md` 链接自动重写为 `.html`
-- 自动为 `index.html` 底部生成单卦报告卡片网格
+- `index.html` 为自定义设计的报告目录首页，不由脚本生成，需手动维护
 
 ### Markdown 书写建议
 
