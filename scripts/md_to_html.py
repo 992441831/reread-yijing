@@ -124,8 +124,44 @@ def rewrite_md_links(html: str, source_dir: Path, output_dir: Path) -> str:
     return pattern.sub(replace_link, html)
 
 
+def normalize_markdown_lists(md_text: str) -> str:
+    """
+    Insert blank lines before top-level list items when the previous line is
+    ordinary paragraph text. Python-Markdown requires a blank line to start a
+    list after a paragraph; many report sources omit it, causing lists to render
+    as plain text with leading dashes.
+    """
+    list_marker_re = re.compile(r"^\s*([-*+]|\d+\.)\s")
+    lines = md_text.splitlines()
+    result: list[str] = []
+    in_fenced_code = False
+
+    for i, line in enumerate(lines):
+        stripped = line.lstrip()
+
+        # Toggle fenced code block state
+        if stripped.startswith("```"):
+            in_fenced_code = not in_fenced_code
+
+        is_list_item = list_marker_re.match(line) is not None
+
+        if (
+            not in_fenced_code
+            and is_list_item
+            and i > 0
+            and lines[i - 1].strip()
+            and list_marker_re.match(lines[i - 1]) is None
+        ):
+            result.append("")
+
+        result.append(line)
+
+    return "\n".join(result)
+
+
 def convert_markdown(md_text: str) -> str:
     """Convert Markdown text to HTML body."""
+    md_text = normalize_markdown_lists(md_text)
     md = markdown.Markdown(
         extensions=[
             "tables",
