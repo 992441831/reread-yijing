@@ -240,6 +240,7 @@ python scripts/md_to_html.py
 - [x] GitHub Pages 静态站点
 - [x] Markdown 批量转 HTML 脚本
 - [x] 第一份主题研究报告（命理学与八字：docs/themes/chinese-destiny-and-bazi.md）
+- [x] 第二份主题研究报告（命理学的现代延伸：docs/themes/chinese-destiny-extensions.md）
 
 ---
 
