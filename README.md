@@ -239,7 +239,7 @@ python scripts/md_to_html.py
 - [x] 第二份单卦报告（坤卦：docs/hexagrams/02-kun.md）
 - [x] GitHub Pages 静态站点
 - [x] Markdown 批量转 HTML 脚本
-- [ ] 第一份主题研究报告
+- [x] 第一份主题研究报告（命理学与八字：docs/themes/chinese-destiny-and-bazi.md）
 
 ---
 

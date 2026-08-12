@@ -58,6 +58,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         <a href="{home_prefix}index.html">总览</a>
         <a href="{home_prefix}hexagrams/01-qian.html">乾卦</a>
         <a href="{home_prefix}hexagrams/02-kun.html">坤卦</a>
+        <a href="{home_prefix}themes/chinese-destiny-and-bazi.html">命理</a>
       </div>
     </div>
   </nav>
