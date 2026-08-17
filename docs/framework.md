@@ -1,6 +1,6 @@
-# 重读易经 · Reread Yijing
+# 研究框架与方法说明
 
-> 本项目是一个开放的研究空间，用于对《易经》及中国先秦哲学进行结构化、可复现、可扩展的深度分析与报告写作。
+> 本文档说明本项目的研究定位、分析框架、专题方向、写作模板与基本守则，为所有报告提供统一的方法论基础。
 
 ---
 
@@ -22,6 +22,7 @@
 ## 二、《易经》总体分析框架
 
 ### 2.1 文本层：经书结构
+
 | 层级 | 内容 | 关键问题 |
 |------|------|----------|
 | **经（Text）** | 六十四卦卦符、卦名、卦辞、爻辞 | 文本来源、层累形成、巫史传统 |
@@ -37,6 +38,7 @@
 - **大衍之数**：五十、四十八、十有八变而成卦的数学结构。
 
 ### 2.3 义理层：核心概念谱系
+
 ```
 天 ─ 道 ─ 命 ─ 性 ─ 情 ─ 欲
 │
@@ -120,103 +122,16 @@
 
 ---
 
-## 五、项目目录规划（逐步建设）
+## 五、参考版本与工具
 
-```
-reread-yijing/
-├── README.md                 # 本文件：总体框架与指南
-├── index.html                # GitHub Pages 首页（自定义设计，展示报告卡片）
-├── hexagrams/                # 单卦 HTML 报告（用于 GitHub Pages）
-│   ├── 01-qian.html
-│   ├── 02-kun.html
-│   └── 03-zhun.html
-├── assets/                   # 网站静态资源
-│   └── css/
-│       └── style.css         # GitHub Pages 样式
-├── docs/                     # Markdown 研究报告（源文件）
-│   ├── 00-方法论与工具.md
-│   ├── 01-易经总论.md
-│   └── hexagrams/            # 六十四卦单卦 Markdown 报告
-│       ├── 01-qian.md
-│       ├── 02-kun.md
-│       └── 03-zhun.md
-├── themes/                   # 主题研究
-├── comparative/              # 比较哲学
-├── data/                     # 原始与处理数据
-│   ├── texts/                # 各类文本（公开版权或自行录入）
-│   └── structured/           # 结构化数据（CSV/JSON/YAML）
-├── scripts/                  # 分析脚本（Python / JS）
-├── notebooks/                # Jupyter 探索笔记
-├── references/               # 参考书目与文献
-└── memory/                   # 项目记忆与待办
-```
-
-## 六、GitHub Pages 发布说明
-
-本项目已生成可直接部署的静态 HTML 站点：
-
-- **首页**：`index.html`
-- **单卦报告**：`hexagrams/01-qian.html`、`hexagrams/02-kun.html`、`hexagrams/03-zhun.html`
-- **样式文件**：`assets/css/style.css`（支持浅色/深色模式）
-
-### 部署步骤
-1. 将本仓库推送到 GitHub。
-2. 进入仓库 **Settings → Pages**。
-3. 在 **Source** 中选择 **Deploy from a branch**。
-4. 选择分支（通常为 `main`），文件夹选择 **/(root)**。
-5. 保存后等待几分钟，站点即可通过 `https://你的用户名.github.io/reread-yijing/` 访问。
-
-### 维护约定
-- Markdown 源文件存放于 `docs/` 目录，作为可编辑的研究底稿。
-- HTML 文件为展示版本，当 Markdown 内容更新时，应同步重新生成对应的 HTML。
-- 新增单卦报告时，建议同时创建 `docs/hexagrams/XX-name.md` 和 `hexagrams/XX-name.html`。
-
-## 七、批量转换脚本
-
-为减少手动维护 HTML 的工作量，项目提供 `scripts/md_to_html.py`，可自动将 `docs/` 下的 Markdown 文件转换为 GitHub Pages 可用的 HTML。
-
-### 依赖安装
-
-```bash
-pip install -r requirements.txt
-```
-
-### 使用方法
-
-```bash
-python scripts/md_to_html.py
-```
-
-### 转换规则
-
-- `docs/hexagrams/01-qian.md` → `hexagrams/01-qian.html`
-- `docs/hexagrams/02-kun.md` → `hexagrams/02-kun.html`
-- `docs/hexagrams/03-zhun.md` → `hexagrams/03-zhun.html`
-- 所有相对 `.md` 链接自动重写为 `.html`
-- `index.html` 为自定义设计的报告目录首页，不由脚本生成，需手动维护
-
-### Markdown 书写建议
-
-为获得最佳转换效果，建议在 Markdown 中遵循以下规范：
-
-1. **列表前留空行**：列表项上方保留一个空行，避免被解析为普通段落。
-2. **标题层级连续**：不要跳级使用标题（如 `##` 后直接 `####`）。
-3. **代码块使用围栏**：使用 ``` 包裹多行代码块。
-4. **表格使用标准语法**：表头下方使用 `|---|---|` 分隔线。
-5. **图片路径使用相对路径**：如 `![图注](assets/images/example.png)`。
-
----
-
-## 八、参考版本与工具
-
-### 8.1 推荐文本
+### 5.1 推荐文本
 - 阮刻本《十三经注疏·周易正义》
 - 朱熹《周易本义》
 - 高亨《周易古经今注》《周易大传今注》
 - 黄寿祺、张善文《周易译注》
 - 马王堆帛书《周易》（陈鼓应、廖名春整理本）
 
-### 8.2 数字工具
+### 5.2 数字工具
 - 文本处理：Python（pandas, jieba, networkx）
 - 可视化：matplotlib, ECharts, D3.js
 - 版本控制：Git
@@ -224,27 +139,12 @@ python scripts/md_to_html.py
 
 ---
 
-## 八、研究守则
+## 六、研究守则
 
 1. 不将《易经》简化为占卜手册，也不神化其为万能体系。
 2. 区分“经”“传”“注”“术”四个层次，避免时代错置。
 3. 对考古新材料保持敏感，对过度推测保持警惕。
 4. 在跨文明比较中，先做“同情的理解”，再做“批判的辨析”。
-
----
-
-## 九、当前状态
-
-- [x] 项目初始化
-- [x] 总体分析框架建立
-- [ ] 核心文本数据整理
-- [x] 第一份单卦报告（乾卦：docs/hexagrams/01-qian.md）
-- [x] 第二份单卦报告（坤卦：docs/hexagrams/02-kun.md）
-- [x] 第三份单卦报告（屯卦：docs/hexagrams/03-zhun.md）
-- [x] GitHub Pages 静态站点
-- [x] Markdown 批量转 HTML 脚本
-- [x] 第一份主题研究报告（命理学与八字：docs/themes/chinese-destiny-and-bazi.md）
-- [x] 第二份主题研究报告（命理学的现代延伸：docs/themes/chinese-destiny-extensions.md）
 
 ---
 
