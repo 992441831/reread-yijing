@@ -128,7 +128,8 @@ reread-yijing/
 ├── index.html                # GitHub Pages 首页（自定义设计，展示报告卡片）
 ├── hexagrams/                # 单卦 HTML 报告（用于 GitHub Pages）
 │   ├── 01-qian.html
-│   └── 02-kun.html
+│   ├── 02-kun.html
+│   └── 03-zhun.html
 ├── assets/                   # 网站静态资源
 │   └── css/
 │       └── style.css         # GitHub Pages 样式
@@ -137,7 +138,8 @@ reread-yijing/
 │   ├── 01-易经总论.md
 │   └── hexagrams/            # 六十四卦单卦 Markdown 报告
 │       ├── 01-qian.md
-│       └── 02-kun.md
+│       ├── 02-kun.md
+│       └── 03-zhun.md
 ├── themes/                   # 主题研究
 ├── comparative/              # 比较哲学
 ├── data/                     # 原始与处理数据
@@ -154,7 +156,7 @@ reread-yijing/
 本项目已生成可直接部署的静态 HTML 站点：
 
 - **首页**：`index.html`
-- **单卦报告**：`hexagrams/01-qian.html`、`hexagrams/02-kun.html`
+- **单卦报告**：`hexagrams/01-qian.html`、`hexagrams/02-kun.html`、`hexagrams/03-zhun.html`
 - **样式文件**：`assets/css/style.css`（支持浅色/深色模式）
 
 ### 部署步骤
@@ -189,6 +191,7 @@ python scripts/md_to_html.py
 
 - `docs/hexagrams/01-qian.md` → `hexagrams/01-qian.html`
 - `docs/hexagrams/02-kun.md` → `hexagrams/02-kun.html`
+- `docs/hexagrams/03-zhun.md` → `hexagrams/03-zhun.html`
 - 所有相对 `.md` 链接自动重写为 `.html`
 - `index.html` 为自定义设计的报告目录首页，不由脚本生成，需手动维护
 
@@ -237,6 +240,7 @@ python scripts/md_to_html.py
 - [ ] 核心文本数据整理
 - [x] 第一份单卦报告（乾卦：docs/hexagrams/01-qian.md）
 - [x] 第二份单卦报告（坤卦：docs/hexagrams/02-kun.md）
+- [x] 第三份单卦报告（屯卦：docs/hexagrams/03-zhun.md）
 - [x] GitHub Pages 静态站点
 - [x] Markdown 批量转 HTML 脚本
 - [ ] 第一份主题研究报告
