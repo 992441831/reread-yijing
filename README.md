@@ -241,6 +241,13 @@ python scripts/md_to_html.py
 - [x] 第一份单卦报告（乾卦：docs/hexagrams/01-qian.md）
 - [x] 第二份单卦报告（坤卦：docs/hexagrams/02-kun.md）
 - [x] 第三份单卦报告（屯卦：docs/hexagrams/03-zhun.md）
+- [x] 第四份单卦报告（蒙卦：docs/hexagrams/04-meng.md）
+- [x] 第五份单卦报告（需卦：docs/hexagrams/05-xu.md）
+- [x] 第六份单卦报告（讼卦：docs/hexagrams/06-song.md）
+- [x] 第七份单卦报告（师卦：docs/hexagrams/07-shi.md）
+- [x] 第八份单卦报告（比卦：docs/hexagrams/08-bi.md）
+- [x] 第九份单卦报告（小畜卦：docs/hexagrams/09-xiaochu.md）
+- [x] 第十份单卦报告（履卦：docs/hexagrams/10-lv.md）
 - [x] GitHub Pages 静态站点
 - [x] Markdown 批量转 HTML 脚本
 - [x] 第一份主题研究报告（命理学与八字：docs/themes/chinese-destiny-and-bazi.md）
