@@ -245,6 +245,14 @@ python scripts/md_to_html.py
 - [x] Markdown 批量转 HTML 脚本
 - [x] 第一份主题研究报告（命理学与八字：docs/themes/chinese-destiny-and-bazi.md）
 - [x] 第二份主题研究报告（命理学的现代延伸：docs/themes/chinese-destiny-extensions.md）
+- [x] 第三份主题研究报告（吉凶悔吝厉的伦理语法学：docs/themes/ethics-of-fortune.md）
+- [x] 第四份主题研究报告（“时”的哲学：docs/themes/philosophy-of-time.md）
+- [x] 第五份主题研究报告（“位”的政治哲学：docs/themes/political-philosophy-of-position.md）
+- [x] 第六份主题研究报告（“象”的认识论：docs/themes/epistemology-of-image.md）
+- [x] 第七份主题研究报告（《易传》中的宇宙生成论：docs/themes/cosmogony-in-yizhuan.md）
+- [x] 第八份主题研究报告（《易经》与先秦诸子的互文：docs/themes/yijing-and-pre-qin-thinkers.md）
+- [x] 研究方法论与工具说明（docs/00-methodology-and-tools.md）
+- [x] 易经总论（docs/01-yijing-overview.md）
 
 ---
 
