@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>重读易经 · 系列专题报告</title>
+    <title>单卦目录 · 重读易经</title>
     <style>
         * {
             margin: 0;
@@ -28,10 +28,10 @@
         /* 头部 */
         .hero {
             text-align: center;
-            padding: 80px 40px;
+            padding: 60px 40px;
             background: linear-gradient(135deg, rgba(217, 119, 6, 0.12) 0%, rgba(30, 41, 59, 0.3) 100%);
             border-radius: 20px;
-            margin-bottom: 50px;
+            margin-bottom: 36px;
             border: 1px solid rgba(217, 119, 6, 0.3);
             position: relative;
             overflow: hidden;
@@ -58,40 +58,81 @@
             z-index: 1;
         }
 
-        .hero .icon {
-            font-size: 3.5em;
-            margin-bottom: 20px;
+        .back-link {
+            display: inline-block;
+            color: #d97706;
+            text-decoration: none;
+            font-size: 0.95em;
+            margin-bottom: 16px;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: #f0f0f0;
         }
 
         .hero h1 {
-            font-size: 2.6em;
+            font-size: 2.2em;
             color: #d97706;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            letter-spacing: 4px;
+            letter-spacing: 3px;
         }
 
         .hero .subtitle {
-            font-size: 1.15em;
+            font-size: 1.05em;
             color: #a0a0a0;
             font-style: italic;
-            margin-bottom: 30px;
         }
 
-        .hero .quote {
+        /* 搜索 */
+        .search-box {
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 16px 24px 16px 52px;
+            font-size: 1em;
+            font-family: inherit;
+            color: #f0f0f0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            outline: none;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .search-box input::placeholder {
             color: #888;
-            font-size: 0.95em;
-            max-width: 560px;
-            margin: 0 auto;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .search-box input:focus {
+            border-color: rgba(217, 119, 6, 0.5);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .search-box .icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            font-size: 1.1em;
+        }
+
+        .stats {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 20px;
         }
 
         /* 报告卡片 */
         .reports {
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 18px;
         }
 
         .card {
@@ -100,8 +141,8 @@
             color: inherit;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-            padding: 32px 36px;
+            border-radius: 14px;
+            padding: 24px 28px;
             transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
             position: relative;
             overflow: hidden;
@@ -120,7 +161,7 @@
         }
 
         .card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             border-color: rgba(217, 119, 6, 0.4);
             background: rgba(255, 255, 255, 0.05);
         }
@@ -129,24 +170,28 @@
             opacity: 1;
         }
 
+        .card.hidden {
+            display: none;
+        }
+
         .card .number {
-            font-size: 0.85em;
+            font-size: 0.82em;
             color: #d97706;
             letter-spacing: 2px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 600;
         }
 
         .card h2 {
-            font-size: 1.5em;
+            font-size: 1.3em;
             color: #f0f0f0;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .card .desc {
             color: #a0a0a0;
-            font-size: 0.98em;
-            margin-bottom: 16px;
+            font-size: 0.95em;
+            margin-bottom: 14px;
         }
 
         .card .tags {
@@ -156,21 +201,21 @@
         }
 
         .card .tag {
-            font-size: 0.78em;
+            font-size: 0.75em;
             color: #c9c9c9;
             background: rgba(217, 119, 6, 0.12);
             border: 1px solid rgba(217, 119, 6, 0.25);
-            padding: 3px 12px;
+            padding: 3px 10px;
             border-radius: 20px;
         }
 
         .card .arrow {
             position: absolute;
-            right: 32px;
+            right: 28px;
             top: 50%;
             transform: translateY(-50%);
             color: #d97706;
-            font-size: 1.4em;
+            font-size: 1.3em;
             opacity: 0;
             transition: opacity 0.25s ease;
         }
@@ -179,26 +224,11 @@
             opacity: 1;
         }
 
-        /* 框架入口 */
-        .framework-link {
+        .empty {
             text-align: center;
-            margin: 40px 0 20px;
-        }
-
-        .framework-link a {
-            display: inline-block;
-            color: #d97706;
-            text-decoration: none;
-            border: 1px solid rgba(217, 119, 6, 0.4);
-            padding: 10px 24px;
-            border-radius: 24px;
-            margin: 0 8px 12px;
-            transition: background 0.25s ease, color 0.25s ease;
-        }
-
-        .framework-link a:hover {
-            background: rgba(217, 119, 6, 0.15);
-            color: #f0f0f0;
+            color: #888;
+            padding: 40px;
+            font-style: italic;
         }
 
         /* 页脚 */
@@ -217,10 +247,10 @@
         }
 
         @media (max-width: 768px) {
-            .hero { padding: 60px 24px; }
-            .hero h1 { font-size: 1.9em; }
-            .card { padding: 24px; }
-            .card h2 { font-size: 1.25em; }
+            .hero { padding: 48px 24px; }
+            .hero h1 { font-size: 1.7em; }
+            .card { padding: 20px; }
+            .card h2 { font-size: 1.15em; }
             .card .arrow { display: none; }
         }
     </style>
@@ -229,20 +259,21 @@
     <div class="container">
         <div class="hero">
             <div class="hero-content">
-                <div class="icon">☯</div>
-                <h1>重读易经</h1>
-                <p class="subtitle">—— 以现代方法，重读中国古代经典的象数、义理与历史</p>
-                <p class="quote">"生生之谓易，成象之谓乾，效法之谓坤。" ——《系辞传》</p>
+                <a class="back-link" href="../index.html">← 返回总览</a>
+                <h1>单卦解读目录</h1>
+                <p class="subtitle">六十四卦逐卦解读 · 已发布第 01–20 卦</p>
             </div>
         </div>
 
-        <div class="framework-link">
-            <a href="framework.html">查看研究框架与方法说明 →</a>
-            <a href="hexagrams/index.html">浏览全部单卦目录 →</a>
+        <div class="search-box">
+            <span class="icon">🔍</span>
+            <input type="text" id="search" placeholder="搜索卦名、卦象或关键词，如“泰”“谦”“天地交”…">
         </div>
 
-        <div class="reports">
-            <a class="card" href="hexagrams/01-qian.html">
+        <div class="stats" id="stats">共 20 篇</div>
+
+        <div class="reports" id="reports">
+            <a class="card" href="01-qian.html" data-keywords="乾卦 天行健 元亨利贞 自强不息 时位哲学 乾上乾下">
                 <div class="number">单卦 01</div>
                 <h2>乾卦：天行健</h2>
                 <p class="desc">创始之道与时位哲学。六爻由潜而亢，揭示刚健、进取与知退的智慧。</p>
@@ -254,7 +285,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/02-kun.html">
+            <a class="card" href="02-kun.html" data-keywords="坤卦 地势坤 厚德载物 含章括囊 乾坤并建 坤上坤下">
                 <div class="number">单卦 02</div>
                 <h2>坤卦：地势坤</h2>
                 <p class="desc">承顺之道与含藏之德。与乾并立，阐发厚德载物、含章可贞的辅佐伦理。</p>
@@ -266,7 +297,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/03-zhun.html">
+            <a class="card" href="03-zhun.html" data-keywords="屯卦 水雷屯 始生之难 利建侯 君子以经纶 坎上震下">
                 <div class="number">单卦 03</div>
                 <h2>屯卦：水雷屯</h2>
                 <p class="desc">始生之难与经纶之道。乾坤交合后万物初生，揭示创造即艰难、乱世需建侯的智慧。</p>
@@ -278,7 +309,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/04-meng.html">
+            <a class="card" href="04-meng.html" data-keywords="蒙卦 山水蒙 童蒙求我 蒙以养正 教育伦理 艮上坎下">
                 <div class="number">单卦 04</div>
                 <h2>蒙卦：山水蒙</h2>
                 <p class="desc">启蒙之道与教育伦理。童蒙求我、蒙以养正，揭示教育贵在诚心、严宽相济的智慧。</p>
@@ -290,7 +321,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/05-xu.html">
+            <a class="card" href="05-xu.html" data-keywords="需卦 水天需 待时而动 有孚光亨 以静制动 坎上乾下">
                 <div class="number">单卦 05</div>
                 <h2>需卦：水天需</h2>
                 <p class="desc">等待之道与时位涵养。云上于天、饮食宴乐，揭示待时而动、以逸待劳的智慧。</p>
@@ -302,7 +333,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/06-song.html">
+            <a class="card" href="06-song.html" data-keywords="讼卦 天水讼 息讼慎讼 大人听讼 作事谋始 乾上坎下">
                 <div class="number">单卦 06</div>
                 <h2>讼卦：天水讼</h2>
                 <p class="desc">争讼之道与明辨之智。天与水违行，揭示息讼慎讼、作事谋始的智慧。</p>
@@ -314,7 +345,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/07-shi.html">
+            <a class="card" href="07-shi.html" data-keywords="师卦 地水师 出师以正 容民畜众 丈人吉 坤上坎下">
                 <div class="number">单卦 07</div>
                 <h2>师卦：地水师</h2>
                 <p class="desc">众人之象与兵戎之诫。地中有水、容民畜众，揭示出师以正、任将以贤的智慧。</p>
@@ -326,7 +357,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/08-bi.html">
+            <a class="card" href="08-bi.html" data-keywords="比卦 水地比 亲比以诚 显比 团结 坎上坤下">
                 <div class="number">单卦 08</div>
                 <h2>比卦：水地比</h2>
                 <p class="desc">亲比之道与团结之德。地上有水、建万国亲诸侯，揭示以诚亲比、光明凝聚的智慧。</p>
@@ -338,7 +369,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/09-xiaochu.html">
+            <a class="card" href="09-xiaochu.html" data-keywords="小畜卦 风天小畜 小有所畜 以柔蓄刚 懿文德 巽上乾下">
                 <div class="number">单卦 09</div>
                 <h2>小畜卦：风天小畜</h2>
                 <p class="desc">小有蓄积与蓄德待时。风行天上、密云不雨，揭示以柔蓄刚、懿文德以待时的智慧。</p>
@@ -350,7 +381,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/10-lv.html">
+            <a class="card" href="10-lv.html" data-keywords="履卦 天泽履 履者礼也 履虎尾 视履考祥 乾上兑下">
                 <div class="number">单卦 10</div>
                 <h2>履卦：天泽履</h2>
                 <p class="desc">践行之道与礼行天下。上天下泽、履虎尾不咥人，揭示以礼践行、辨上下定民志的智慧。</p>
@@ -362,7 +393,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/11-tai.html">
+            <a class="card" href="11-tai.html" data-keywords="泰卦 地天泰 天地交 小往大来 保泰戒盈 坤上乾下">
                 <div class="number">单卦 11</div>
                 <h2>泰卦：地天泰</h2>
                 <p class="desc">天地交泰与通泰之道。地天相交、小往大来，揭示上下相通、阴阳交济的通泰智慧。</p>
@@ -374,7 +405,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/12-pi.html">
+            <a class="card" href="12-pi.html" data-keywords="否卦 天地否 天地不交 俭德辟难 否极泰来 乾上坤下">
                 <div class="number">单卦 12</div>
                 <h2>否卦：天地否</h2>
                 <p class="desc">天地不交与俭德辟难。天地不交、大往小来，揭示闭塞之世君子韬光养晦的智慧。</p>
@@ -386,7 +417,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/13-tongren.html">
+            <a class="card" href="13-tongren.html" data-keywords="同人卦 天火同人 同人于野 类族辨物 天下为公 乾上离下">
                 <div class="number">单卦 13</div>
                 <h2>同人卦：天火同人</h2>
                 <p class="desc">和同于人与聚众之道。天火同明、同人于野，揭示超越私党、以天下为公的智慧。</p>
@@ -398,7 +429,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/14-dayou.html">
+            <a class="card" href="14-dayou.html" data-keywords="大有卦 火天大有 遏恶扬善 富而不骄 顺天休命 离上乾下">
                 <div class="number">单卦 14</div>
                 <h2>大有卦：火天大有</h2>
                 <p class="desc">盛大富有与遏恶扬善。火在天上、光照万物，揭示富有之世守正用誉、顺天休命的智慧。</p>
@@ -410,7 +441,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/15-qian.html">
+            <a class="card" href="15-qian.html" data-keywords="谦卦 地山谦 劳谦 裒多益寡 六爻皆吉 坤上艮下">
                 <div class="number">单卦 15</div>
                 <h2>谦卦：地山谦</h2>
                 <p class="desc">谦德之光与裒多益寡。地中有山、高山屈下，揭示劳谦有终、称物平施的智慧。</p>
@@ -422,7 +453,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/16-yu.html">
+            <a class="card" href="16-yu.html" data-keywords="豫卦 雷地豫 雷出地奋 介于石 作乐崇德 震上坤下">
                 <div class="number">单卦 16</div>
                 <h2>豫卦：雷地豫</h2>
                 <p class="desc">豫乐之和与防逸之道。雷出地奋、万物悦乐，揭示作乐崇德、戒逸防溺的智慧。</p>
@@ -434,7 +465,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/17-sui.html">
+            <a class="card" href="17-sui.html" data-keywords="随卦 泽雷随 随时而动 刚来下柔 择善而从 兑上震下">
                 <div class="number">单卦 17</div>
                 <h2>随卦：泽雷随</h2>
                 <p class="desc">随时而动与择善而从。泽中有雷、顺以动悦，揭示随时守正、向晦入宴息的智慧。</p>
@@ -446,7 +477,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/18-gu.html">
+            <a class="card" href="18-gu.html" data-keywords="蛊卦 山风蛊 振蛊革新 干父之蛊 先甲后甲 艮上巽下">
                 <div class="number">单卦 18</div>
                 <h2>蛊卦：山风蛊</h2>
                 <p class="desc">振蛊革新与继志述事。山下有风、物腐生蛊，揭示干父之蛊、振民育德的智慧。</p>
@@ -458,7 +489,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/19-lin.html">
+            <a class="card" href="19-lin.html" data-keywords="临卦 地泽临 临民以正 教思无穷 八月有凶 坤上兑下">
                 <div class="number">单卦 19</div>
                 <h2>临卦：地泽临</h2>
                 <p class="desc">临民之道与教思无穷。泽上有地、阳刚渐长，揭示咸临知临、容保民无疆的智慧。</p>
@@ -470,7 +501,7 @@
                 <span class="arrow">→</span>
             </a>
 
-            <a class="card" href="hexagrams/20-guan.html">
+            <a class="card" href="20-guan.html" data-keywords="观卦 风地观 观民设教 盥而不荐 观我生 巽上坤下">
                 <div class="number">单卦 20</div>
                 <h2>观卦：风地观</h2>
                 <p class="desc">观民设教与风化天下。风行地上、无所不遍，揭示盥而不荐、省方观民设教的智慧。</p>
@@ -481,132 +512,39 @@
                 </div>
                 <span class="arrow">→</span>
             </a>
-
-            <a class="card" href="themes/chinese-destiny-and-bazi.html">
-                <div class="number">主题 01</div>
-                <h2>中国命理学与易经</h2>
-                <p class="desc">从阴阳五行到生辰八字，讲解命理学与《易经》的思想关联，以及四柱推命的基本方法。</p>
-                <div class="tags">
-                    <span class="tag">四柱八字</span>
-                    <span class="tag">十神用神</span>
-                    <span class="tag">象数应用</span>
-                </div>
-                <span class="arrow">→</span>
-            </a>
-
-            <a class="card" href="themes/chinese-destiny-extensions.html">
-                <div class="number">主题 02</div>
-                <h2>命理学的现代延伸</h2>
-                <p class="desc">纳甲符号学、时位哲学、统计验证、心理学对话与 AI 时代伦理的跨学科探讨。</p>
-                <div class="tags">
-                    <span class="tag">纳甲时位</span>
-                    <span class="tag">统计验证</span>
-                    <span class="tag">AI 伦理</span>
-                </div>
-                <span class="arrow">→</span>
-            </a>
-
-            <a class="card" href="01-yijing-overview.html">
-                <div class="number">总论</div>
-                <h2>易经总论</h2>
-                <p class="desc">经书结构、象数系统、义理核心、历史流变与现代研究路径的全景导览。</p>
-                <div class="tags">
-                    <span class="tag">六十四卦</span>
-                    <span class="tag">易传</span>
-                    <span class="tag">五重视角</span>
-                </div>
-                <span class="arrow">→</span>
-            </a>
-
-            <a class="card" href="00-methodology-and-tools.html">
-                <div class="number">方法</div>
-                <h2>研究方法论与工具说明</h2>
-                <p class="desc">文本优先、五重视角、可验证、可迭代的研究规范与 Markdown/Git/Python 工作流。</p>
-                <div class="tags">
-                    <span class="tag">方法论</span>
-                    <span class="tag">数字人文</span>
-                    <span class="tag">工作流</span>
-                </div>
-                <span class="arrow">→</span>
-            </a>
-
-            <a class="card" href="themes/ethics-of-fortune.html">
-                <div class="number">主题 03</div>
-                <h2>吉凶悔吝厉的伦理语法学</h2>
-                <p class="desc">梳理《易经》价值判词谱系，分析吉、凶、悔、吝、厉、无咎的伦理语法与实践功能。</p>
-                <div class="tags">
-                    <span class="tag">价值判断</span>
-                    <span class="tag">伦理语法</span>
-                    <span class="tag">修省</span>
-                </div>
-                <span class="arrow">→</span>
-            </a>
-
-            <a class="card" href="themes/philosophy-of-time.html">
-                <div class="number">主题 04</div>
-                <h2>“时”的哲学</h2>
-                <p class="desc">待时、趋时与时中：从《易传》时间观到现代时机哲学的跨文明对话。</p>
-                <div class="tags">
-                    <span class="tag">时机</span>
-                    <span class="tag">时中</span>
-                    <span class="tag">行动哲学</span>
-                </div>
-                <span class="arrow">→</span>
-            </a>
-
-            <a class="card" href="themes/political-philosophy-of-position.html">
-                <div class="number">主题 05</div>
-                <h2>“位”的政治哲学</h2>
-                <p class="desc">君臣、上下、进退：以六爻之位解析《易经》的政治伦理与社会秩序思想。</p>
-                <div class="tags">
-                    <span class="tag">君臣之道</span>
-                    <span class="tag">上下秩序</span>
-                    <span class="tag">进退</span>
-                </div>
-                <span class="arrow">→</span>
-            </a>
-
-            <a class="card" href="themes/epistemology-of-image.html">
-                <div class="number">主题 06</div>
-                <h2>“象”的认识论</h2>
-                <p class="desc">观物取象、立象尽意、得意忘象：从《易经》符号思维到现代符号学的对话。</p>
-                <div class="tags">
-                    <span class="tag">观物取象</span>
-                    <span class="tag">符号思维</span>
-                    <span class="tag">认知隐喻</span>
-                </div>
-                <span class="arrow">→</span>
-            </a>
-
-            <a class="card" href="themes/cosmogony-in-yizhuan.html">
-                <div class="number">主题 07</div>
-                <h2>《易传》中的宇宙生成论</h2>
-                <p class="desc">太极、两仪、四象、八卦与“生生之谓易”的宇宙生成图式。</p>
-                <div class="tags">
-                    <span class="tag">太极</span>
-                    <span class="tag">生生</span>
-                    <span class="tag">乾坤</span>
-                </div>
-                <span class="arrow">→</span>
-            </a>
-
-            <a class="card" href="themes/yijing-and-pre-qin-thinkers.html">
-                <div class="number">主题 08</div>
-                <h2>《易经》与先秦诸子的互文</h2>
-                <p class="desc">孔子、老庄、荀子、阴阳家、法家与《易经》的思想交汇与经典生成。</p>
-                <div class="tags">
-                    <span class="tag">先秦诸子</span>
-                    <span class="tag">经传关系</span>
-                    <span class="tag">互文</span>
-                </div>
-                <span class="arrow">→</span>
-            </a>
         </div>
+
+        <div class="empty hidden" id="empty">未找到匹配的单卦报告，请尝试其他关键词。</div>
 
         <div class="footer">
             <p>重读易经系列报告 · 2026年8月</p>
-            <p style="margin-top: 8px;">Markdown 版本与源码见 <a href="https://github.com/992441831/reread-yijing">GitHub 仓库</a></p>
+            <p style="margin-top: 8px;"><a href="../index.html">返回总览</a> · Markdown 版本与源码见 <a href="https://github.com/992441831/reread-yijing">GitHub 仓库</a></p>
         </div>
     </div>
+
+    <script>
+        const searchInput = document.getElementById('search');
+        const cards = document.querySelectorAll('.card');
+        const stats = document.getElementById('stats');
+        const empty = document.getElementById('empty');
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value.trim().toLowerCase();
+            let visible = 0;
+
+            cards.forEach(card => {
+                const text = (card.textContent + ' ' + card.dataset.keywords).toLowerCase();
+                if (text.includes(query)) {
+                    card.classList.remove('hidden');
+                    visible++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            stats.textContent = query ? `找到 ${visible} 篇` : '共 20 篇';
+            empty.classList.toggle('hidden', visible > 0);
+        });
+    </script>
 </body>
 </html>
